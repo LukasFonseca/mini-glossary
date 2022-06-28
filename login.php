@@ -43,7 +43,12 @@ $vista = new Vista();
     $vista->printMenu();
     if (isset($_GET['out']) && isset($_SESSION['id_usuario'])){
         $_SESSION = [];
-        header("Location: login.php");
+        // header("Location: login.php");
+        ?>
+        <script>
+            location.href = "login.php";
+        </script>
+        <?php
     }
     else{
         $vista->printIniciarSesion();
