@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 include_once("modelo/modelo.php");
 $modelo = new Modelo();
@@ -42,7 +42,11 @@ $vista = new Vista();
     <?php
     $vista->printMenu();
     if (!isset($_SESSION['id_usuario'])){
-        header("Location: login.php");
+        ?>
+        <script>
+            location.href="login.php";
+        </script>
+        <?php
     }
     else{
         // echo $_SESSION['id_usuario'];
