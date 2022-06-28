@@ -68,7 +68,7 @@ class Vista
                         <p class="h4 mb-4">Log in</p>
                         <input type="text" id="defaultLoginFormEmail" name="email" class="form-control mb-4" placeholder="Email">
                         <input type="password" id="defaultLoginFormPassword" name="clave" class="form-control mb-4" placeholder="Password">
-                        <button class="btn btn-info btn-block my-4" type="submit">Iniciar Sesión</button>
+                        <button class="btn btn-info btn-block my-4" type="submit">Log In</button>
                         <!-- Si no tienes cuenta registrate aqui -->
                         <p>You do not have an account? <a href="registro.php">Register (Free)</a></p>
                     </form>
@@ -211,18 +211,24 @@ class Vista
                         while ($reg_glosario = mysqli_fetch_array($glosarios)){
                             ?>
                             <div class="p-2 mb-4" style="border: solid 1px black;">
-                                <?php
-                                    echo $reg_glosario['nombre'] . "'s glossary: ";
+                                <div class="text-center">
+                                    <?php 
+                                    echo '<b class="text-left">' . $reg_glosario['nombre'] . "'s glossary: </b>";
                                     echo  $reg_glosario['nombre_tema'] . ' (' . $reg_glosario['lenguaje'] .  ')' . '<br>';
-
+                                    ?>
+                                </div>
+                                <?php
                                     include_once 'modelo/modelo.php';
                                     $modelo = new Modelo();
                                     $palabras = $modelo->selectPalabras($reg_glosario['id_glosario']);
-
+                                ?>
+                                <div class="text-left">
+                                <?php
                                     while ($reg_palabra = mysqli_fetch_array($palabras)){
-                                        echo $reg_palabra['concepto'] . ' -> ' . $reg_palabra['definicion'] . '<br>';
+                                        echo "<b>" . $reg_palabra['concepto'] . '</b> -> ' . $reg_palabra['definicion'] . '<br>';
                                     }
                                 ?>
+                                </div>
                                 <!-- AGREGAR TRADUCCION -->
                                 <div class="row pt-2">
                                     <div class="col-10">
@@ -356,18 +362,24 @@ class Vista
                         while ($reg_glosario = mysqli_fetch_array($glosarios)){
                             ?>
                             <div class="p-2 mb-4" style="border: solid 1px black;">
-                                <?php
-                                    echo $reg_glosario['nombre'] . "'s glossary: ";
+                                <div class="text-center">
+                                    <?php 
+                                    echo '<b class="text-left">' . $reg_glosario['nombre'] . "'s glossary: </b>";
                                     echo  $reg_glosario['nombre_tema'] . ' (' . $reg_glosario['lenguaje'] .  ')' . '<br>';
-
+                                    ?>
+                                </div>
+                                <?php
                                     include_once 'modelo/modelo.php';
                                     $modelo = new Modelo();
                                     $palabras = $modelo->selectPalabras($reg_glosario['id_glosario']);
-
+                                ?>
+                                <div class="text-left">
+                                <?php
                                     while ($reg_palabra = mysqli_fetch_array($palabras)){
-                                        echo $reg_palabra['concepto'] . ' -> ' . $reg_palabra['definicion'] . '<br>';
+                                        echo "<b>" . $reg_palabra['concepto'] . '</b> -> ' . $reg_palabra['definicion'] . '<br>';
                                     }
                                 ?>
+                                </div>
                                 <!-- AGREGAR TRADUCCION -->
                                 <div class="row pt-2">
                                     <div class="col-10">
