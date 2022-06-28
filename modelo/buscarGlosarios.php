@@ -45,18 +45,24 @@ if (mysqli_num_rows($glosarios) > 0){
     while ($reg_glosario = mysqli_fetch_array($glosarios)){
         ?>
         <div class="p-2 mb-4" style="border: solid 1px black;">
-            <?php
-                echo $reg_glosario['nombre'] . "'s glossary: ";
+            <div class="text-center">
+                <?php 
+                echo '<b class="text-left">' . $reg_glosario['nombre'] . "'s glossary: </b>";
                 echo  $reg_glosario['nombre_tema'] . ' (' . $reg_glosario['lenguaje'] .  ')' . '<br>';
-
+                ?>
+            </div>
+            <?php
                 include_once 'modelo/modelo.php';
                 $modelo = new Modelo();
                 $palabras = $modelo->selectPalabras($reg_glosario['id_glosario']);
-
+            ?>
+            <div class="text-left">
+            <?php
                 while ($reg_palabra = mysqli_fetch_array($palabras)){
-                    echo $reg_palabra['concepto'] . ' -> ' . $reg_palabra['definicion'] . '<br>';
+                    echo "<b>" . $reg_palabra['concepto'] . '</b> -> ' . $reg_palabra['definicion'] . '<br>';
                 }
             ?>
+            </div>
             <!-- AGREGAR TRADUCCION -->
             <div class="row pt-2">
                 <div class="col-10">
