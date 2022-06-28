@@ -215,4 +215,16 @@ class Modelo
         
         return $select;
     }
+
+    // ELIMINAR GLOSARIO
+    public function updateEliminarGlosario($id_glosario){
+        $this->conectar();
+
+        $sql = "UPDATE `glosarios` SET `activo`= 0 WHERE `id_glosario` = $id_glosario";
+
+        $delete = mysqli_query($this->conexion, $sql) or die(mysqli_error($this->conexion) . ' error en delete glosario');
+        
+        return $delete;
+    }
+
 }
